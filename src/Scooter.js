@@ -1,7 +1,9 @@
 class Scooter{
   // scooter code here
+  //static serial number means its associated with all instances of the class not just one of them
   static nextSerial = 1;
 
+  //constructor to set the variables to the default values
   constructor(station) {
     this.station = station;
     this.user = null;
@@ -10,6 +12,7 @@ class Scooter{
     this.isBroken = false;
   }
 
+  //rent method checks if the scooter has enough charge and isnt broken if so it is rented
   rent() {
     if (this.charge > 20 && !this.isBroken) {
       this.station = null;
@@ -21,11 +24,13 @@ class Scooter{
     }
   }
 
+  //docks the scooter sets user to null and changes the station
   dock(station) {
     this.station = station;
     this.user = null;
   }
 
+  //recharges the scooter in intervals of 1 second
   recharge() {
     let charge = this.charge;
     let interval = setInterval(() => {
@@ -38,6 +43,7 @@ class Scooter{
     }, 1000); 
   }
 
+  //repair function repairs the scooter in intervals of 5 seconds
   requestRepair() {
     let interval = setInterval(() => {
       console.log('Repair completed');
