@@ -16,11 +16,13 @@ const User = require('../src/User')
 describe('User', () => {
     let user;
 
+
+    //base parameters for each test
     beforeEach(() => {
         user = new User('john_doe', 'password123', 30)
     });
 
-
+    //used to check if the classes properties are working correctly
     describe('Has all properties', () => {
 
         test('should have a username property', () => {
@@ -41,6 +43,7 @@ describe('User', () => {
    
     });
 
+    //tests for the login method
     describe('checking the outputs of the login method', () => {
 
         test('should log in the user with correct password', () => {
@@ -56,7 +59,8 @@ describe('User', () => {
 
     });
 
-    describe('checking the logout function', () => {
+    //tests for the logout method
+    describe('checking the logout method', () => {
 
         test('should log out the user', () => {
             user.login('password123');
