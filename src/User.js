@@ -1,5 +1,7 @@
 class User {
   // User code here
+
+  //starting with basic constructor to set the attributes when the user is registered
   constructor(username, password, age) {
     this.username = username;
     this.password = password;
@@ -7,6 +9,8 @@ class User {
     this.loggedIn = false;
   }
 
+
+  //login function used to see if somone enters the correct password
   login(password) {
     if (password === this.password) {
       this.loggedIn = true;
@@ -15,6 +19,8 @@ class User {
     }
   }
 
+
+  //sets loggedIn boolean to false when the user logs out
   logout() {
     this.loggedIn = false;
   }
