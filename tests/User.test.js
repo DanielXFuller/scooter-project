@@ -34,8 +34,13 @@ describe('User', () => {
         test('should have an age property', () => {
             expect(user).toHaveProperty('age', 30);
         });
+
+        test('should have the logged in property and set to false at default', () => {
+            expect(user).toHaveProperty('loggedIn', false);
+        });
    
     });
+
 
 
 
