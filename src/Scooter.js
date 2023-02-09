@@ -20,6 +20,13 @@ class Scooter{
       throw new Error('scooter needs repair');
     }
   }
+
+  dock(station) {
+    this.station = station;
+    this.user = null;
+  }
+
+  
 }
 
 
