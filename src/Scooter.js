@@ -26,7 +26,19 @@ class Scooter{
     this.user = null;
   }
 
-  
+  recharge() {
+    let charge = this.charge;
+    let interval = setInterval(() => {
+      if (charge < 100) {
+        charge++;
+        console.log('Scooter charge: ${charge}%');
+      } else {
+        clearInterval(interval)
+      }
+    }, 1000); 
+  }
+
+
 }
 
 
