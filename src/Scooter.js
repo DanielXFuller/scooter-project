@@ -38,6 +38,14 @@ class Scooter{
     }, 1000); 
   }
 
+  requestRepair() {
+    let interval = setInterval(() => {
+      console.log('Repair completed');
+      clearInterval(interval);
+      this.isBroken = false;
+    }, 5000);
+  }
+
 
 }
 
