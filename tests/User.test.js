@@ -11,3 +11,8 @@ const User = require('../src/User')
 // test login
 
 // test logout
+
+
+describe('User', () => {
+
+});
