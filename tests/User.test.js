@@ -41,6 +41,31 @@ describe('User', () => {
    
     });
 
+    describe('checking the outputs of the login method', () => {
+
+        test('should log in the user with correct password', () => {
+            user.login('password123');
+            expect(user.loggedIn).toBe(true);
+        });
+
+        test('should throw error with incorrect password', () => {
+            expect(() => {
+                user.login('incorrectpassword');
+            }).toThrow('Incorrect password');
+        });
+
+    });
+
+    describe('checking the logout function', () => {
+
+        test('should log out the user', () => {
+            user.login('password123');
+            user.logout();
+            expect(user.loggedIn).toBe(false);
+        });
+
+    });
+
 
 
 
