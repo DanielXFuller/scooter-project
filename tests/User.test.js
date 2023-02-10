@@ -44,7 +44,7 @@ describe('User', () => {
     });
 
     //tests for the login method
-    describe('checking the outputs of the login method', () => {
+    describe('Login Method', () => {
 
         test('should log in the user with correct password', () => {
             user.login('password123');
@@ -60,7 +60,7 @@ describe('User', () => {
     });
 
     //tests for the logout method
-    describe('checking the logout method', () => {
+    describe('Logout Method', () => {
 
         test('should log out the user', () => {
             user.login('password123');

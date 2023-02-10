@@ -1,3 +1,5 @@
+jest.setTimeout(10000);
+
 const Scooter = require('../src/Scooter')
 const User = require('../src/User')
 
@@ -14,12 +16,16 @@ describe('Scooter', () => {
     let scooter;
     let user;
     let station;
+
   
     beforeEach(() => {
       station = 'Test Station';
       scooter = new Scooter(station);
       user = new User('testuser', 'testpassword', 20);
+      
     });
+
+
   
     describe('Has all properties', () => { 
   
@@ -56,10 +62,75 @@ describe('Scooter', () => {
       });
   
     });
+
+    describe('Methods', () => {
+
+      describe('Rent Method', () => {
+
+        test('rent method changes scooter attributes correctly', () => {
+          scooter.rent(user);
+          expect(scooter.station).toBeNull();
+          expect(scooter.user).toEqual(user);
+        });
+
+        test('throws an error if scooter charge is less than or equal to 20%', () => {
+          scooter.charge = 19;
+          expect(() => {
+            scooter.rent(new User('testuser', 'testpassword', 20));
+          }).toThrowError('scooter needs to charge');
+        });
+
+        test('throws an error if scooter is broken', () => {
+          scooter.isBroken = true;
+          scooter.charge = 30;
+          expect(() => {
+            scooter.rent(new User('testuser', 'testpassword', 20));
+          }).toThrowError('scooter needs repair');
+        });
+
+      });
+
+      describe('Dock Method', () => { 
+
+        test('dock method changes scooter attributes correctly', () => {
+          scooter.rent(user);
+          scooter.dock(station);
+          expect(scooter.station).toBe(station);
+          expect(scooter.user).toBeNull();
+        });
+
+      });
+
+      describe('Recharge Method', () => { 
+
+        test('recharge increases charge', async () => {
+
+          await scooter.recharge(); // we need to wait for the charge!
+          expect(scooter.charge).toBe(100);
+  
+        });
+
+      });
+
+
+
+      describe('requestRepair Method', () => { 
+
+        test('requestRepair repairs the scooter after 5 seconds', async () => {
+
+          scooter.isBroken = true;
+          await scooter.requestRepair();
+          expect(scooter.isBroken).toEqual(false);
+  
+        });
+  
+      });
+
+    });
   
   
   
-  })
+  });
 });
 
 

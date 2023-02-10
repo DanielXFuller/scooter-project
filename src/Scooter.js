@@ -31,26 +31,20 @@ class Scooter{
   }
 
   //recharges the scooter in intervals of 1 second
-  recharge() {
-    let charge = this.charge;
-    let interval = setInterval(() => {
-      if (charge < 100) {
-        charge++;
-        console.log('Scooter charge: ${charge}%');
-      } else {
-        clearInterval(interval)
-      }
-    }, 1000); 
+  async recharge() {
+    console.log('Starting charge');
+    
+    await new Promise(resolve => setTimeout(resolve, 2000)); // wait 2 seconds
+    this.charge = 100
+
+    console.log('Charge complete'); 
   }
 
   //repair function repairs the scooter in intervals of 5 seconds
-  requestRepair() {
-    let interval = setInterval(() => {
-      console.log('Repair completed');
-      clearInterval(interval);
-      this.isBroken = false;
-    }, 5000);
-  }
+  async requestRepair() {
+    await new Promise(resolve => setTimeout(resolve, 5000)); // wait 5 seconds
+    this.isBroken = false;
+}
 
 
 }
