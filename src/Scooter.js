@@ -13,10 +13,10 @@ class Scooter{
   }
 
   //rent method checks if the scooter has enough charge and isnt broken if so it is rented
-  rent() {
+  rent(user) {
     if (this.charge > 20 && !this.isBroken) {
       this.station = null;
-      this.user = 'current user'
+      this.user = user;
     } else if (this.charge <= 20) {
       throw new Error('scooter needs to charge');
     } else {
