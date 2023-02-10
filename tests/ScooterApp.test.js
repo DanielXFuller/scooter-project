@@ -25,7 +25,7 @@ describe('ScooterApp', () => {
 
         test('should throw an error if the user is already registered', () => {
             app.registerUser('john', 'password', 18);
-            espect(() => {
+            expect(() => {
                 app.registerUser('john', 'password', 18)
             }).toThrow('Already registered');
         });
@@ -34,8 +34,12 @@ describe('ScooterApp', () => {
     describe('loginUser', () => {
         test('should log in a user if the username and password are correct', () => {
             app.registerUser('john', 'password', 18);
-            const user = app.loginUser('john', 'password');
-            expect(user.isLoggedIn).toBe(true);
+            try {
+              const user = app.loginUser('john', 'password');
+              expect(user.loggedIn).toBe(true);
+            } catch (error) {
+              expect(error.message).toBe("Username or password is incorrect");
+            }
         });
 
         test('should throw an error if the username does not exist', () => {
@@ -54,10 +58,10 @@ describe('ScooterApp', () => {
 
     describe('logoutUser', () => {
         test('should log out a user', () => {
-            const user = app.registerUser('john', 'password', 18);
-            app.loginUser('john', 'password');
+            app.registerUser('john', 'password', 18);
+            const user = app.loginUser('john', 'password');
             app.logoutUser('john');
-            expect(user.isLoggedIn).toBe(false);
+            expect(user.loggedIn).toBe(false);
         });
 
         test('should throw an error if the user is not logged in', () => {

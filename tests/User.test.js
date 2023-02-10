@@ -54,7 +54,7 @@ describe('User', () => {
         test('should throw error with incorrect password', () => {
             expect(() => {
                 user.login('incorrectpassword');
-            }).toThrow('Incorrect password');
+            }).toThrow('Username or password is incorrect');
         });
 
     });
