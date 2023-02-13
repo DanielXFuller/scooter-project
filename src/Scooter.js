@@ -34,7 +34,7 @@ class Scooter{
   async recharge() {
     console.log('Starting charge');
     
-    await new Promise(resolve => setTimeout(resolve, 2000)); // wait 2 seconds
+    await new Promise(resolve => setTimeout(resolve, 1000)); // wait 1 seconds
     this.charge = 100
 
     console.log('Charge complete'); 
