@@ -68,8 +68,7 @@ class ScooterApp {
       throw new Error("Scooter is rented");
     }
     this.stations[station].push(scooter);
-    scooter.station = station;
-    scooter.dock();
+    scooter.dock(station);
     console.log("Scooter is docked");
   }
 

@@ -101,7 +101,8 @@ describe('ScooterApp', () => {
     describe('rentScooter', () => {
         test("rentScooter should rent scooter to a user", () => {
             const scooter = app.createScooter("station1");
-            const user = app.registeredUsers["user1"];
+            const user = new User('User1', 'password', 20)
+            app.registerUser('User1', 'password', 20)
             app.rentScooter(scooter, user);
             expect(scooter.user).toBe(user);
         });
